@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <!-- Breadcrumb / Back button -->
+        <div class="mb-4">
+            <a href="{{ url_for('main.index') }}" class="text-muted text-decoration-none small">
+                <i class="bi bi-arrow-left me-1"></i>返回儀表板
+            </a>
+        </div>
+
+        <div class="glass-card p-4 p-sm-5">
+            <div class="d-flex align-items-center mb-4 pb-2 border-bottom border-light" style="border-color: rgba(255, 255, 255, 0.05) !important;">
+                <div class="bg-primary bg-gradient text-white rounded-circle p-3 d-inline-flex me-3">
+                    <i class="bi bi-journal-plus fs-4"></i>
+                </div>
+                <div>
+                    <h2 class="h4 mb-0 text-white">記錄新收支</h2>
+                    <p class="text-muted small mb-0">記下日常每一筆消費與收入，落實財務管理</p>
+                </div>
+            </div>
+
+            <!-- Add Form -->
+            <form method="POST" action="{{ url_for('main.create_transaction') }}">
+                <!-- Transaction Type -->
+                <div class="mb-4">
+                    <label for="type" class="form-label">收支類型 <span class="text-danger">*</span></label>
+                    <select name="type" id="type" class="form-select form-control-glass" required>
+                        <option value="expense" {% if transaction.type == 'expense' %}selected{% endif %}>支出 (Expense)</option>
+                        <option value="income" {% if transaction.type == 'income' %}selected{% endif %}>收入 (Income)</option>
+                    </select>
+                </div>
+
+                <!-- Amount -->
+                <div class="mb-4">
+                    <label for="amount" class="form-label">金額 <span class="text-danger">*</span></label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-dark border-secondary text-muted">$</span>
+                        <input type="number" step="0.01" min="0.01" name="amount" id="amount" value="{{ transaction.amount }}" class="form-control form-control-glass" placeholder="請輸入金額 (例如: 150.00)" required>
+                    </div>
+                </div>
+
+                <!-- Category -->
+                <div class="mb-4">
+                    <label for="category" class="form-label">款項分類 <span class="text-danger">*</span></label>
+                    <input type="text" name="category" id="category" list="categories" value="{{ transaction.category }}" class="form-control form-control-glass" placeholder="請輸入或選擇分類" required>
+                    <datalist id="categories">
+                        <option value="餐飲食品">
+                        <option value="交通出行">
+                        <option value="休閒娛樂">
+                        <option value="薪資收入">
+                        <option value="投資理財">
+                        <option value="居家生活">
+                        <option value="網路購物">
+                        <option value="醫療保健">
+                        <option value="學習教育">
+                        <option value="其他分類">
+                    </datalist>
+                </div>
+
+                <!-- Date -->
+                <div class="mb-4">
+                    <label for="date" class="form-label">交易日期 <span class="text-danger">*</span></label>
+                    <input type="date" name="date" id="date" value="{{ transaction.date }}" class="form-control form-control-glass" required>
+                </div>
+
+                <!-- Description / Note -->
+                <div class="mb-5">
+                    <label for="description" class="form-label">備註說明 (選填)</label>
+                    <textarea name="description" id="description" rows="3" class="form-control form-control-glass" placeholder="可以寫些詳細資訊，例如：與朋友聚餐、買筆電...">{{ transaction.description }}</textarea>
+                </div>
+
+                <!-- Submit buttons -->
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-end">
+                    <a href="{{ url_for('main.index') }}" class="btn btn-secondary-glass px-4 py-2">取消</a>
+                    <button type="submit" class="btn btn-primary-grad px-4 py-2">
+                        <i class="bi bi-check-circle me-1"></i>確認送出
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

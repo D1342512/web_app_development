@@ -1,0 +1,254 @@
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --text-primary: #f8fafc;
+    --text-muted: #94a3b8;
+    --border-color: rgba(255, 255, 255, 0.08);
+    --card-bg: rgba(30, 41, 59, 0.7);
+    --card-blur: blur(16px);
+    
+    --theme-primary: #6366f1;
+    --theme-primary-hover: #4f46e5;
+    
+    --color-income: #10b981;
+    --color-expense: #f43f5e;
+    
+    --grad-primary: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+    --grad-income: linear-gradient(135deg, #34d399 0%, #059669 100%);
+    --grad-expense: linear-gradient(135deg, #fb7185 0%, #e11d48 100%);
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: radial-gradient(circle at top right, #1e1b4b 0%, var(--bg-primary) 60%);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, .stat-value {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+/* Glassmorphism Card Style */
+.glass-card {
+    background: var(--card-bg);
+    backdrop-filter: var(--card-blur);
+    -webkit-backdrop-filter: var(--card-blur);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+    box-shadow: 0 15px 35px rgba(99, 102, 241, 0.15);
+}
+
+/* Top Navbar Style */
+.navbar-glass {
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.navbar-brand {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+    background: linear-gradient(135deg, #a5b4fc 0%, #818cf8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Statistics Board Dashboard */
+.stat-box {
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+}
+
+.stat-box.balance::before { background: var(--grad-primary); }
+.stat-box.income::before { background: var(--grad-income); }
+.stat-box.expense::before { background: var(--grad-expense); }
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: 8px;
+    margin-bottom: 0;
+}
+
+/* Custom Table Style */
+.custom-table {
+    color: var(--text-primary);
+    vertical-align: middle;
+}
+
+.custom-table thead th {
+    background: rgba(15, 23, 42, 0.4);
+    border-bottom: 2px solid var(--border-color);
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    padding: 14px 16px;
+}
+
+.custom-table tbody td {
+    padding: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.table-row-hover {
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.table-row-hover:hover {
+    background-color: rgba(255, 255, 255, 0.02) !important;
+    transform: translateY(-1px);
+}
+
+/* Custom Badges */
+.badge-income {
+    background: rgba(16, 185, 129, 0.15);
+    color: #34d399;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-weight: 500;
+    font-size: 0.8rem;
+}
+
+.badge-expense {
+    background: rgba(244, 63, 94, 0.15);
+    color: #fb7185;
+    border: 1px solid rgba(244, 63, 94, 0.3);
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-weight: 500;
+    font-size: 0.8rem;
+}
+
+/* Gradient Buttons */
+.btn-primary-grad {
+    background: var(--grad-primary);
+    border: none;
+    color: white;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-primary-grad:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+    color: white;
+}
+
+.btn-secondary-glass {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+.btn-secondary-glass:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn-danger-glass {
+    background: rgba(244, 63, 94, 0.1);
+    border: 1px solid rgba(244, 63, 94, 0.2);
+    color: #fb7185;
+    transition: all 0.2s ease;
+}
+
+.btn-danger-glass:hover {
+    background: #e11d48;
+    color: white;
+    border-color: #e11d48;
+}
+
+/* Beautiful Inputs styling */
+.form-control-glass {
+    background: rgba(15, 23, 42, 0.4);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary) !important;
+    border-radius: 8px;
+    padding: 10px 14px;
+    transition: all 0.3s ease;
+}
+
+.form-control-glass:focus {
+    background: rgba(15, 23, 42, 0.6);
+    border-color: var(--theme-primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+    outline: none;
+}
+
+.form-label {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+select.form-control-glass option {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+/* Customized Toast/Alert styles */
+.alert-glass {
+    background: rgba(30, 41, 59, 0.95);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    color: var(--text-primary);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.alert-glass.alert-success {
+    border-left: 4px solid var(--color-income);
+}
+
+.alert-glass.alert-danger {
+    border-left: 4px solid var(--color-expense);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--bg-secondary);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #334155;
+}

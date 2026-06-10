@@ -1,0 +1,25 @@
+# Python caching
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.venv/
+venv/
+ENV/
+env/
+
+# SQLite databases
+instance/
+*.db
+*.sqlite3
+
+# Env configs
+.env
+.flaskenv
+
+# IDE / System files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
